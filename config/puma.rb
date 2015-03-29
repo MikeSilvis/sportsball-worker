@@ -1,5 +1,5 @@
 environment ENV['RACK_ENV']
-workers 5
+workers 2
 threads 1, 3
 preload_app!
 
