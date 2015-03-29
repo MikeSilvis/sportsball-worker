@@ -22,10 +22,10 @@ class Worker::ESPN
   end
 end
 
-#class RealtimePush
-  #include Sidekiq::Worker
+class Worker::RealtimePush
+  include Sidekiq::Worker
 
-  #def perform
-    #Realtime::Checker.push_updates
-  #end
-#end
+  def perform
+    Realtime::Checker.push_updates
+  end
+end
