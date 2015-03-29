@@ -12,7 +12,7 @@ end
 require 'sidekiq/web'
 
 Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
-  [user, password] == ["mikesilvis", "helloworld"]
+  [user, password] == ["mikesilvis", (ENV["SIDEKIQ_PASSWORD"] || 'helloworld')]
 end
 
 run Rack::URLMap.new('/' => Sidekiq::Web)
