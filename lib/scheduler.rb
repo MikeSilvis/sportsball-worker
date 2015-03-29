@@ -2,6 +2,7 @@ require 'bundler'
 Bundler.require
 
 require 'sidekiq'
+require 'faraday'
 require_relative './worker/cache'
 require_relative './worker/realtime'
 
@@ -19,6 +20,7 @@ class Worker::ESPN
   def perform
     Worker::Cache.clear
     ESPN::Cache.precache
+    Faraday.get 'http://api.jumbotron.io/leagues/'
   end
 end
 
