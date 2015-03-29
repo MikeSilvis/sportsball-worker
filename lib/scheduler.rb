@@ -1,3 +1,6 @@
+require 'bundler'
+Bundler.require
+
 require 'sidekiq'
 require_relative './worker/cache'
 
@@ -13,7 +16,7 @@ class Worker::Cache
   include Sidekiq::Worker
 
   def perform
-    Rails.cache.clear
-    ESPN::Cache.precache
+    #Rails.cache.flush
+    #ESPN::Cache.precache
   end
 end
