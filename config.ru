@@ -15,4 +15,4 @@ Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
   [user, password] == ["mikesilvis", "helloworld"]
 end
 
-run Rack::URLMap.new('/sidekiq' => Sidekiq::Web)
+run Rack::URLMap.new('/' => Sidekiq::Web)
