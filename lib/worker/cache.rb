@@ -19,6 +19,10 @@ module Worker
         client.set cache_key, data
       end
 
+      def clear
+        client.flush
+      end
+
       private
 
       def client

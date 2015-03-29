@@ -12,11 +12,11 @@ module Worker
   end
 end
 
-class Worker::Cache
+class Worker::ESPN
   include Sidekiq::Worker
 
   def perform
-    #Rails.cache.flush
-    #ESPN::Cache.precache
+    Worker::Cache.flush
+    ESPN::Cache.precache
   end
 end
