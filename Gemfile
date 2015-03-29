@@ -10,4 +10,4 @@ gem 'puma'
 gem 'rack'
 gem 'sidekiq'
 gem 'sinatra'
-
+gem 'pusher'
