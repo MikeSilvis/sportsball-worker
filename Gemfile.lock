@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mikesilvis/espn-scraper.git
-  revision: 05f411a560f627302af7cd8eb5fbfdba08f6d203
+  revision: b142686e4a43dbbbb784b3c565eee13daa6bc332
   specs:
     espn_scraper (1.0.5)
       activesupport
@@ -54,7 +54,7 @@ GEM
     rack-protection (1.5.3)
       rack
     redis (3.2.1)
-    redis-namespace (1.5.1)
+    redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
     sidekiq (3.3.3)
       celluloid (>= 0.16.0)
