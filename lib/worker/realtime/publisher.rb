@@ -1,10 +1,14 @@
+require 'json'
+require 'faraday'
 require 'pusher'
 
 class Realtime::Publisher
+  DEFAULT_API_URL = 'http://api.jumbotron.io/'
+
   def self.send_boxscore(league, game_id)
     game_id = game_id.to_s
-    boxscore = Boxscore.find(league, game_id)
-    game = League.new(league).scores(boxscore.game_date.to_date).detect { |s| s.boxscore == game_id }
+    game = get_data("leagues/#{league}/scores")['scores'].detect { |s| s['boxscore'] == game_id }
+    boxscore = get_data("leagues/#{league}/boxscores/#{game_id}")
 
     return unless game && boxscore
 
@@ -16,7 +20,7 @@ class Realtime::Publisher
 
   def self.send_scores(league)
     date = ActiveSupport::TimeZone['America/New_York'].today
-    scores = League.new(league).scores(date)
+    scores = get_data("leagues/#{league}/scores?date=#{date}")['scores']
 
     push_event("scores_#{league}", {
       scores: scores
@@ -27,5 +31,9 @@ class Realtime::Publisher
 
   def self.push_event(channel, data)
     Realtime.client.trigger(channel, 'event', data)
+  end
+
+  def self.get_data(path)
+    JSON.parse(Faraday.get("#{DEFAULT_API_URL}/#{path}").body)
   end
 end
