@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mikesilvis/espn-scraper.git
-  revision: 7a683127120d13d32fab4341f5ceffbe7aa40347
+  revision: 9b09614d183e33a1d255824ffc9b617639143fbc
   specs:
     espn_scraper (1.0.5)
       activesupport
@@ -22,7 +22,7 @@ GEM
       columnize (= 0.9.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
-    clockwork (1.1.0)
+    clockwork (1.2.0)
       activesupport
       tzinfo
     columnize (0.9.0)
